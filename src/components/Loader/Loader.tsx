@@ -1,6 +1,6 @@
 import { ThreeCircles } from "react-loader-spinner";
 
-export const Loader = () => {
+export const Loader: React.FC = () => {
   return (
     <ThreeCircles
       visible={true}
