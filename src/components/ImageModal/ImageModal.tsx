@@ -1,4 +1,11 @@
 import Modal from "react-modal";
+import { UnsplashPhoto } from "../../APIService/APIService.types";
+
+interface ImageModalProps {
+  images: UnsplashPhoto;
+  isOpen: boolean;
+  onRequestClose: () => void;
+}
 
 const customStyles = {
   overlay: {
@@ -19,7 +26,11 @@ const customStyles = {
 
 Modal.setAppElement("#root");
 
-function ImageModal({ images, isOpen, onRequestClose }) {
+const ImageModal: React.FC<ImageModalProps> = ({
+  images,
+  isOpen,
+  onRequestClose,
+}) => {
   return (
     <Modal
       isOpen={isOpen}
@@ -27,8 +38,8 @@ function ImageModal({ images, isOpen, onRequestClose }) {
       contentLabel="Image Modal"
       style={customStyles}
     >
-      <img src={images} alt="Selected Image" />
+      <img src={images.urls.regular} alt="Selected Image" />
     </Modal>
   );
-}
+};
 export default ImageModal;
