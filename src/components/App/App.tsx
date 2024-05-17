@@ -8,16 +8,19 @@ import { Loader } from "../Loader/Loader";
 import ImageModal from "../ImageModal/ImageModal";
 import { getPhotos } from "../../APIService/APIService";
 import { Toaster } from "react-hot-toast";
+import { UnsplashPhoto } from "../../APIService/APIService.types";
 
 export default function App() {
   const [error, setError] = useState<string | null>(null);
-  const [page, setPage] = useState(1);
-  const [images, setImages] = useState([]);
-  const [totalResults, setTotalResults] = useState(0);
-  const [query, setQuery] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [page, setPage] = useState<number>(1);
+  const [images, setImages] = useState<UnsplashPhoto[]>([]);
+  const [totalResults, setTotalResults] = useState<number>(0);
+  const [query, setQuery] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<UnsplashPhoto | null>(
+    null
+  );
 
   useEffect(() => {
     if (!query) return;
@@ -31,7 +34,7 @@ export default function App() {
       .finally(() => setLoading(false));
   }, [query, page]);
 
-  function handleSubmit(query) {
+  function handleSubmit(query: string) {
     setImages([]);
     setPage(1);
     setError(null);
@@ -41,7 +44,7 @@ export default function App() {
   function handleLoadMore() {
     setPage(page + 1);
   }
-  const handleImageClick = (image) => {
+  const handleImageClick = (image: UnsplashPhoto) => {
     setSelectedImage(image);
     setIsModalOpen(true);
   };
