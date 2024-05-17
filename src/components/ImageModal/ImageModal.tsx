@@ -1,8 +1,8 @@
 import Modal from "react-modal";
-import { UnsplashPhoto } from "../../APIService/APIService.types";
+import { ModalPhoto } from "../../APIService/APIService.types";
 
 interface ImageModalProps {
-  images: UnsplashPhoto;
+  images: ModalPhoto;
   isOpen: boolean;
   onRequestClose: () => void;
 }
@@ -38,7 +38,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
       contentLabel="Image Modal"
       style={customStyles}
     >
-      <img src={images.urls.regular} alt="Selected Image" />
+      <img src={images.url} alt="Selected Image" />
     </Modal>
   );
 };

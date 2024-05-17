@@ -8,7 +8,7 @@ import { Loader } from "../Loader/Loader";
 import ImageModal from "../ImageModal/ImageModal";
 import { getPhotos } from "../../APIService/APIService";
 import { Toaster } from "react-hot-toast";
-import { UnsplashPhoto } from "../../APIService/APIService.types";
+import { ModalPhoto, UnsplashPhoto } from "../../APIService/APIService.types";
 
 export default function App() {
   const [error, setError] = useState<string | null>(null);
@@ -18,9 +18,10 @@ export default function App() {
   const [query, setQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<UnsplashPhoto | null>(
-    null
-  );
+  const [selectedImage, setSelectedImage] = useState<ModalPhoto>({
+    url: "",
+    alt: "",
+  });
 
   useEffect(() => {
     if (!query) return;
@@ -44,13 +45,13 @@ export default function App() {
   function handleLoadMore() {
     setPage(page + 1);
   }
-  const handleImageClick = (image: UnsplashPhoto) => {
-    setSelectedImage(image);
+  const handleImageClick = (imageUrl: string, imageAlt: string): void => {
+    setSelectedImage({ url: imageUrl, alt: imageAlt });
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    setSelectedImage(null);
+    //setSelectedImage(null);
     setIsModalOpen(false);
   };
 

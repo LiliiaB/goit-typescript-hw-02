@@ -1,6 +1,6 @@
 export interface UnsplashPhoto {
   id: string;
-  description: string | null;
+  description: string;
   urls: {
     full: string;
     regular: string;
@@ -16,4 +16,9 @@ export interface UnsplashResponse {
   results: UnsplashPhoto[];
   total: number;
   total_pages: number;
+}
+
+export interface ModalPhoto {
+  url: string;
+  alt: string;
 }

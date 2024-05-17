@@ -4,7 +4,7 @@ import css from "./ImageGallery.module.css";
 
 interface ImageGalleryProps {
   images: UnsplashPhoto[];
-  onClick: (url: string) => void;
+  onClick: (imageUrl: string, imageAlt: string) => void;
 }
 
 export const ImageGallery: React.FC<ImageGalleryProps> = ({
@@ -17,7 +17,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
         <li key={image.id}>
           <ImageCard
             image={image}
-            onClick={() => onClick(image.urls.regular)}
+            onClick={() => onClick(image.urls.regular, image.description)}
           />
         </li>
       ))}
