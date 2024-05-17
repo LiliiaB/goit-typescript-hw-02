@@ -1,7 +1,16 @@
+import { UnsplashPhoto } from "../../APIService/APIService.types";
 import { ImageCard } from "../ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
 
-export const ImageGallery = ({ images, onClick }) => {
+interface ImageGalleryProps {
+  images: UnsplashPhoto[];
+  onClick: (url: string) => void;
+}
+
+export const ImageGallery: React.FC<ImageGalleryProps> = ({
+  images,
+  onClick,
+}) => {
   return (
     <ul className={css.list}>
       {images.map((image) => (

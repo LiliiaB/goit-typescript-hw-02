@@ -6,6 +6,10 @@ export interface UnsplashPhoto {
     regular: string;
     small: string;
   };
+  likes: number;
+  user: {
+    name: string;
+  };
 }
 
 export interface UnsplashResponse {

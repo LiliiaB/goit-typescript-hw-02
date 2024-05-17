@@ -1,11 +1,20 @@
+import { UnsplashPhoto } from "../../APIService/APIService.types";
 import css from "./ImageCard.module.css";
 
-export const ImageCard = ({ image: { urls, title, likes, user }, onClick }) => {
+interface ImageCardProps {
+  image: UnsplashPhoto;
+  onClick: () => void;
+}
+
+export const ImageCard: React.FC<ImageCardProps> = ({
+  image: { urls, description, likes, user },
+  onClick,
+}) => {
   return (
     <div className={css.card}>
       <img
         src={urls.small}
-        alt={title}
+        alt={description || "Image"}
         className={css.image}
         onClick={onClick}
       />
