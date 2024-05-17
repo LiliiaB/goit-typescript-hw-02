@@ -10,7 +10,7 @@ import { getPhotos } from "../../APIService/APIService";
 import { Toaster } from "react-hot-toast";
 
 export default function App() {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
   const [totalResults, setTotalResults] = useState(0);
